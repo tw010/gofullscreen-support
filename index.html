@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Support, troubleshooting, and request submission for the GoFullScreen Chrome extension." />
+    <title>GoFullScreen Support</title>
+    <style>
+      :root {
+        --ink: #17202a;
+        --muted: #5f6b76;
+        --paper: #f4f7fa;
+        --surface: #ffffff;
+        --line: #d8e0e8;
+        --blue: #2563eb;
+        --blue-dark: #1d4ed8;
+        --green: #167c59;
+        --gold: #b7791f;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+        background-size: 32px 32px;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      a { color: inherit; }
+
+      .site-header {
+        background: #17202a;
+        color: #fff;
+        border-bottom: 3px solid var(--blue);
+      }
+
+      .header-inner,
+      .main-inner,
+      .footer-inner {
+        width: min(1060px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .header-inner {
+        min-height: 62px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 27px;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        font-family: Georgia, serif;
+        font-size: 14px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: #cbd5df;
+        font-size: 13px;
+      }
+
+      nav a { text-decoration: none; }
+      nav a:hover { color: #fff; }
+
+      .support-intro {
+        padding: 72px 0 64px;
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 740px;
+        margin: 0;
+        font-size: clamp(40px, 7vw, 66px);
+        line-height: 1.08;
+      }
+
+      .intro-copy {
+        max-width: 700px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+      }
+
+      .primary-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 11px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 10px 15px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        color: #fff;
+        background: var(--blue);
+        border-color: var(--blue);
+      }
+
+      .button.primary:hover { background: var(--blue-dark); }
+      .button.secondary:hover { border-color: #aeb9c5; background: #f8fafc; }
+
+      .button svg {
+        width: 17px;
+        height: 17px;
+        fill: currentColor;
+      }
+
+      .request-note {
+        max-width: 720px;
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 12.5px;
+        line-height: 1.55;
+      }
+
+      .support-section {
+        padding: 64px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-heading {
+        max-width: 660px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: 34px;
+      }
+
+      .section-heading p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .step {
+        min-height: 190px;
+        padding: 22px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .step-number {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 18px;
+        color: #fff;
+        background: var(--blue);
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .step:nth-child(2) .step-number { background: var(--green); }
+      .step:nth-child(3) .step-number { background: var(--gold); }
+
+      .step h3 {
+        margin: 0 0 9px;
+        font-size: 20px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .details-band { background: rgba(255, 255, 255, 0.82); }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 42px;
+      }
+
+      .details-grid h2 {
+        margin: 0 0 16px;
+        font-size: 28px;
+      }
+
+      .details-grid ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .details-grid li {
+        margin: 9px 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .privacy-callout {
+        padding: 18px 20px;
+        border-left: 4px solid var(--green);
+        background: #eef9f4;
+      }
+
+      .privacy-callout p {
+        margin: 0;
+        color: #315d4e;
+        line-height: 1.6;
+      }
+
+      footer {
+        color: #cbd5df;
+        background: #17202a;
+      }
+
+      .footer-inner {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        font-size: 13px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 16px;
+      }
+
+      .footer-links a { text-decoration: none; }
+      .footer-links a:hover { color: #fff; }
+
+      @media (max-width: 760px) {
+        .header-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+        nav { flex-wrap: wrap; gap: 10px 16px; }
+        .support-intro, .support-section { padding: 48px 0; }
+        .steps, .details-grid { grid-template-columns: 1fr; }
+        .primary-actions, .primary-actions .button { width: 100%; }
+        .footer-inner { align-items: flex-start; flex-direction: column; padding: 20px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./"><span class="brand-mark">G</span> GoFullScreen Support</a>
+        <nav aria-label="Support navigation">
+          <a href="capture-test.html">Capture test</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://chromewebstore.google.com/detail/oakpajnbganffddahfgdpmkhimeeoapp">Chrome Web Store</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="support-intro">
+        <div class="main-inner">
+          <p class="eyebrow">SUPPORT REQUESTS</p>
+          <h1>GoFullScreen Support</h1>
+          <p class="intro-copy">Report a problem, ask a question, or suggest an improvement. The request form guides you through the useful details without collecting anything automatically.</p>
+          <div class="primary-actions">
+            <a class="button primary" href="https://github.com/tw010/gofullscreen-support/issues/new?template=support-request.yml">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5l-3 3-3-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v10h5.83L12 18.17 14.17 16H20V6H4Zm3 3h10v2H7V9Zm0 4h7v2H7v-2Z"/></svg>
+              Open a support request
+            </a>
+            <a class="button secondary" href="capture-test.html">Try the capture test page</a>
+          </div>
+          <p class="request-note">Requests are handled through GitHub Issues, so GitHub may ask you to sign in. GoFullScreen never attaches your active page, screenshot, or settings automatically.</p>
+        </div>
+      </section>
+
+      <section class="support-section">
+        <div class="main-inner">
+          <div class="section-heading">
+            <h2>Before you submit</h2>
+            <p>These three quick steps often solve the issue or provide the details needed for a useful response.</p>
+          </div>
+          <div class="steps">
+            <article class="step"><span class="step-number">1</span><h3>Reload the extension</h3><p>Open chrome://extensions, find GoFullScreen, select Reload, and refresh the webpage you want to capture.</p></article>
+            <article class="step"><span class="step-number">2</span><h3>Try the test page</h3><p>Use the safe public capture page to check whether the issue is specific to one website or happens everywhere.</p></article>
+            <article class="step"><span class="step-number">3</span><h3>Copy diagnostics</h3><p>Open GoFullScreen Settings and select Copy diagnostic info. Paste that text into the request form.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="support-section details-band">
+        <div class="main-inner details-grid">
+          <div>
+            <h2>Helpful information</h2>
+            <ul>
+              <li>What you expected and what happened instead.</li>
+              <li>Short steps that reproduce the problem.</li>
+              <li>The copied diagnostic info from Settings.</li>
+              <li>A public example URL or the type of page involved, when safe to share.</li>
+            </ul>
+          </div>
+          <div>
+            <h2>Protect your privacy</h2>
+            <div class="privacy-callout"><p>Do not submit passwords, private page URLs, personal messages, account details, or unredacted screenshots. The diagnostic copy intentionally excludes page URLs and screenshots.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>GoFullScreen support</span>
+        <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="https://github.com/tw010/gofullscreen-support/issues">Existing requests</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

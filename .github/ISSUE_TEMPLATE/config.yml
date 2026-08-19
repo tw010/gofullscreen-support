@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Try the capture test page
+    url: https://tw010.github.io/gofullscreen-support/capture-test.html
+    about: Check whether GoFullScreen works correctly on a safe public test page.
+  - name: Read the privacy policy
+    url: https://tw010.github.io/gofullscreen-support/privacy.html
+    about: Learn what GoFullScreen processes locally and what it never sends.

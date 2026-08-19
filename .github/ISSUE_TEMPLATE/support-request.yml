@@ -1,0 +1,74 @@
+name: Support request
+description: Report a problem, ask a question, or suggest an improvement for GoFullScreen.
+title: "[Support] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve GoFullScreen. Do not include passwords, private page URLs, account details, or unredacted screenshots.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request type
+      description: What would you like help with?
+      options:
+        - Something is not working
+        - I have a question
+        - I want to suggest an improvement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened or what would you like to request?
+      description: Give a clear, short description of the problem, question, or improvement.
+      placeholder: Describe your request here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: For a problem, list the steps that consistently cause it. Leave this empty for a general question or suggestion.
+      placeholder: |
+        1. Open a regular webpage
+        2. Click the GoFullScreen icon
+        3. ...
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What did you expect to happen?
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostic info
+      description: In GoFullScreen Settings, select "Copy diagnostic info" and paste it here. No page URL or screenshot is included.
+      render: text
+
+  - type: input
+    id: page-type
+    attributes:
+      label: Page type or public example URL
+      description: Optional. Use a public example only. Do not submit a private, account-specific, or confidential URL.
+      placeholder: Documentation page, webmail app, public example URL, etc.
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Additional context or redacted screenshots
+      description: Optional. Remove names, messages, account details, and other private information before attaching anything.
+
+  - type: checkboxes
+    id: privacy-check
+    attributes:
+      label: Privacy check
+      options:
+        - label: I have removed passwords, private URLs, account details, and other sensitive information from this request.
+          required: true

@@ -52,6 +52,13 @@ settings, clipboard resizing, and local counters used to limit the frequency
 of the optional rating prompt. These settings stay on the device and are never
 transmitted.
 
+The Settings page can generate a support diagnostics text after the user
+clicks "Copy diagnostic info". It contains the extension version, browser
+version, capture mode, output format, and selected download options. It is
+copied to the local clipboard only. It never includes a page URL, screenshot,
+or captured page content, and it is shared only if the user chooses to paste
+it into a support request.
+
 Under the Chrome Web Store User Data Policy, website content and screen
 captures can be considered user data even when processed only locally. This
 policy applies to that local processing even though nothing is transmitted.

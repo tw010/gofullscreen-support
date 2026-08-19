@@ -10,7 +10,7 @@ then opens it in a new tab to copy, download, or export as a PDF.
 
 Found a bug or have a question?
 
-- [Open a support request](https://github.com/tw010/gofullscreen-support/issues/new)
+- [Open a support request](https://github.com/tw010/gofullscreen-support/issues/new?template=support-request.yml)
 - [View existing support requests](https://github.com/tw010/gofullscreen-support/issues)
 
 ## Privacy Policy
