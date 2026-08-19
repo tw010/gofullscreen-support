@@ -8,13 +8,16 @@ then opens it in a new tab to copy, download, or export as a PDF.
 
 ## Support
 
-Found a bug or have a question? Contact: **support@gofullscreen.example**
-*(replace with your real support email/address before publishing)*
+Found a bug or have a question?
+
+- [Open a support request](https://github.com/tw010/gofullscreen-support/issues/new)
+- [View existing support requests](https://github.com/tw010/gofullscreen-support/issues)
 
 ## Privacy Policy
 
-See the [Privacy Policy](https://gist.github.com/tw010/9f52982390d04ae9ce87e73b4016a281).
+Read the [GoFullScreen Privacy Policy](privacy.html).
 
 ## Install
 
-Find GoFullScreen on the [Chrome Web Store](https://chromewebstore.google.com/).
+Install GoFullScreen from the
+[Chrome Web Store](https://chromewebstore.google.com/detail/oakpajnbganffddahfgdpmkhimeeoapp).
