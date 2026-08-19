@@ -13,6 +13,11 @@ Found a bug or have a question?
 - [Open a support request](https://github.com/tw010/gofullscreen-support/issues/new?template=support-request.yml)
 - [View existing support requests](https://github.com/tw010/gofullscreen-support/issues)
 
+Chrome does not allow extensions to run the page scripts required for
+full-page capture on the Chrome Web Store, its Developer Dashboard,
+`chrome://` pages, the built-in PDF viewer, or pages from other extensions.
+This is expected browser behavior and does not need a support request.
+
 ## Privacy Policy
 
 Read the [GoFullScreen Privacy Policy](privacy.html).

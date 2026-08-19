@@ -7,6 +7,8 @@ body:
       value: |
         Thanks for helping improve GoFullScreen. Do not include passwords, private page URLs, account details, or unredacted screenshots.
 
+        **Expected Chrome restriction:** Chrome does not allow extensions to run the page scripts required for full-page capture on the Chrome Web Store, the Chrome Web Store Developer Dashboard, `chrome://` pages, Chrome's built-in PDF viewer, or pages belonging to other extensions. This is not a GoFullScreen error. Please use the public capture test page instead of submitting a request for these protected pages.
+
   - type: dropdown
     id: request-type
     attributes:

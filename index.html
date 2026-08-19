@@ -164,6 +164,31 @@
         line-height: 1.55;
       }
 
+      .known-restriction {
+        max-width: 760px;
+        margin-top: 24px;
+        padding: 16px 18px;
+        border: 1px solid #efd59b;
+        border-left: 4px solid var(--gold);
+        border-radius: 0 7px 7px 0;
+        background: #fff8e8;
+      }
+
+      .known-restriction strong {
+        display: block;
+        margin-bottom: 5px;
+        color: #8a5815;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 16px;
+      }
+
+      .known-restriction p {
+        margin: 0;
+        color: #6d542f;
+        font-size: 13.5px;
+        line-height: 1.55;
+      }
+
       .support-section {
         padding: 64px 0;
         border-bottom: 1px solid var(--line);
@@ -321,6 +346,10 @@
             <a class="button secondary" href="capture-test.html">Try the capture test page</a>
           </div>
           <p class="request-note">Requests are handled through GitHub Issues, so GitHub may ask you to sign in. GoFullScreen never attaches your active page, screenshot, or settings automatically.</p>
+          <div class="known-restriction">
+            <strong>Expected Chrome security restriction</strong>
+            <p>Chrome does not allow extensions to run the page scripts required for full-page capture on the Chrome Web Store, its Developer Dashboard, <code>chrome://</code> pages, the built-in PDF viewer, or pages belonging to other extensions. This is not a GoFullScreen error and does not need a support request.</p>
+          </div>
         </div>
       </section>
 
@@ -331,7 +360,7 @@
             <p>These three quick steps often solve the issue or provide the details needed for a useful response.</p>
           </div>
           <div class="steps">
-            <article class="step"><span class="step-number">1</span><h3>Reload the extension</h3><p>Open chrome://extensions, find GoFullScreen, select Reload, and refresh the webpage you want to capture.</p></article>
+            <article class="step"><span class="step-number">1</span><h3>Check the page type</h3><p>Protected Chrome pages cannot be captured. If you are on one of the page types listed above, this is expected browser behavior.</p></article>
             <article class="step"><span class="step-number">2</span><h3>Try the test page</h3><p>Use the safe public capture page to check whether the issue is specific to one website or happens everywhere.</p></article>
             <article class="step"><span class="step-number">3</span><h3>Copy diagnostics</h3><p>Open GoFullScreen Settings and select Copy diagnostic info. Paste that text into the request form.</p></article>
           </div>
