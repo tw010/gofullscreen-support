@@ -31,8 +31,12 @@ When you click the GoFullScreen toolbar button, the extension:
 3. Combines the captured sections into a single image inside your browser.
 4. Stores that image temporarily in local IndexedDB storage so it can be
    displayed in the bundled viewer.
-5. Lets you copy, annotate, crop, download, split, or export the image as a
-   PDF.
+5. Lets you copy, annotate, blur, pixelate, redact, crop, download, split, or
+  export the image as a PDF.
+
+Blur and pixelation are visual-obscuring tools. Solid redaction covers the
+selected area with opaque pixels; after the user saves the edit, the covered
+underlying pixels are not present in the resulting image.
 
 The extension also reads temporary page-layout information such as element
 dimensions, scroll positions, visibility, and fixed or sticky positioning.
@@ -51,6 +55,16 @@ mode, capture feedback, scroll animation, image format and quality, filename
 prefix, download behavior, image-part settings, clipboard resizing, and local
 counters used to limit the frequency of the optional rating prompt. These
 settings stay on the device and are never transmitted.
+
+Recent capture history is disabled by default. When the user explicitly
+enables it, GoFullScreen stores up to five completed screenshots in local
+IndexedDB, subject to an additional total limit of approximately 250 MB. The
+oldest records are deleted automatically when either limit would be exceeded.
+History records contain the image Blob, local creation time, pixel dimensions,
+and device-pixel-ratio metadata. They do not contain the page URL or title.
+The user can delete individual captures in the viewer, clear all captures from
+Settings or the viewer, or disable history to remove older captures
+immediately.
 
 The Settings page can generate a support diagnostics text after the user
 clicks "Copy diagnostic info". It contains the extension version, browser
@@ -87,8 +101,9 @@ sandbox:
 - Scrolling and measurement: a script injected only into the tab selected by
   the user and only for the duration of the capture.
 - Image stitching: an in-memory canvas in the extension service worker.
-- Temporary image storage: local IndexedDB. Older screenshot records are
-  cleared whenever a new completed screenshot is stored.
+- Temporary image storage and optional bounded history: local IndexedDB. With
+  history off, only the current capture is retained. With history on,
+  automatic count and storage limits apply as described above.
 - Preferences and local counters: `chrome.storage.local` on the device.
 - Display, editing, copying, and downloading: pages bundled with the extension.
 
@@ -97,11 +112,14 @@ any third party.
 
 ## Data retention
 
-The most recent screenshot is kept in local IndexedDB only so the viewer can
-display it. Older screenshot records are removed when a new screenshot is
-stored. Preferences and local counters remain in `chrome.storage.local` until
-the user resets them, clears the extension data, or uninstalls GoFullScreen.
-Nothing is retained by the developer because the developer never receives it.
+With history disabled, the most recent screenshot is kept in local IndexedDB
+only so the viewer can display it, and older records are removed. With history
+enabled, at most five recent captures and approximately 250 MB are retained
+locally, with oldest-first automatic deletion. Preferences and local counters
+remain in `chrome.storage.local` until the user resets them, clears the
+extension data, or uninstalls GoFullScreen. Saved captures can be cleared
+inside GoFullScreen at any time. Nothing is retained by the developer because
+the developer never receives it.
 
 ## Permissions
 
