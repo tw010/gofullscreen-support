@@ -47,10 +47,10 @@ classify, or inspect that information. It handles it only as part of the
 user-requested screenshot.
 
 GoFullScreen stores preferences with `chrome.storage.local`, including capture
-mode, image format and quality, filename prefix, download behavior, image-part
-settings, clipboard resizing, and local counters used to limit the frequency
-of the optional rating prompt. These settings stay on the device and are never
-transmitted.
+mode, capture feedback, scroll animation, image format and quality, filename
+prefix, download behavior, image-part settings, clipboard resizing, and local
+counters used to limit the frequency of the optional rating prompt. These
+settings stay on the device and are never transmitted.
 
 The Settings page can generate a support diagnostics text after the user
 clicks "Copy diagnostic info". It contains the extension version, browser
