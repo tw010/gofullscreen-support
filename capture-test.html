@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A safe public page for testing GoFullScreen full-page screenshot capture." />
+    <title>GoFullScreen Capture Test</title>
+    <style>
+      :root {
+        --ink: #17202a;
+        --muted: #5f6b76;
+        --paper: #f7f9fb;
+        --surface: #ffffff;
+        --line: #d7dee6;
+        --blue: #2563eb;
+        --green: #16845b;
+        --red: #d14343;
+        --gold: #b7791f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        margin: 0;
+        max-width: 100%;
+        overflow-x: hidden;
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+        background-size: 32px 32px;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      .test-bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 54px;
+        padding: 10px max(20px, calc((100vw - 1120px) / 2));
+        color: #ffffff;
+        background: #17202a;
+        border-bottom: 3px solid var(--blue);
+      }
+
+      .test-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-weight: 700;
+      }
+
+      .test-mark {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 24px;
+        border: 2px solid #ffffff;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: Georgia, serif;
+        font-size: 13px;
+      }
+
+      .safe-label {
+        font-size: 12px;
+        color: #b8f3dc;
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      .section-inner {
+        width: min(1120px, calc(100% - 40px));
+        min-width: 0;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .intro {
+        min-height: 620px;
+        display: flex;
+        align-items: center;
+        padding: 80px 0 72px;
+        background: rgba(255, 255, 255, 0.86);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 1.05;
+      }
+
+      .intro-copy {
+        max-width: 720px;
+        margin: 26px 0 0;
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+      }
+
+      .capture-instruction {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+        padding: 13px 16px;
+        color: #ffffff;
+        background: var(--blue);
+        border-radius: 6px;
+        font-weight: 700;
+      }
+
+      .capture-instruction span {
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        color: var(--blue);
+        background: #ffffff;
+        border-radius: 50%;
+      }
+
+      .test-section {
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        padding: 88px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .test-section:nth-child(even) {
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .section-number {
+        margin: 0 0 10px;
+        color: var(--red);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(32px, 5vw, 52px);
+        line-height: 1.15;
+      }
+
+      .section-copy {
+        max-width: 720px;
+        margin: 18px 0 34px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+        overflow-wrap: anywhere;
+      }
+
+      .check-grid,
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .check-item,
+      .metric {
+        min-height: 150px;
+        padding: 22px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .check-item strong,
+      .metric strong {
+        display: block;
+        margin-bottom: 10px;
+        font-family: Georgia, serif;
+        font-size: 20px;
+      }
+
+      .check-item p,
+      .metric p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        overflow: hidden;
+        min-height: 210px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .swatch {
+        display: flex;
+        align-items: flex-end;
+        padding: 18px;
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .swatch.blue { background: var(--blue); }
+      .swatch.green { background: var(--green); }
+      .swatch.red { background: var(--red); }
+      .swatch.gold { background: var(--gold); }
+
+      .sample-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .sample-table th,
+      .sample-table td {
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+      }
+
+      .sample-table th {
+        color: #ffffff;
+        background: #263746;
+        font-size: 13px;
+      }
+
+      .sample-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .status::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .alignment-test {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .type-sample,
+      .ruler {
+        min-height: 260px;
+        padding: 28px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .type-sample .large {
+        margin: 0 0 16px;
+        font-family: Georgia, serif;
+        font-size: 48px;
+      }
+
+      .type-sample p {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .ruler {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        align-items: end;
+      }
+
+      .ruler span {
+        display: block;
+        background: var(--blue);
+        border-radius: 4px 4px 0 0;
+      }
+
+      .ruler span:nth-child(1) { height: 25%; }
+      .ruler span:nth-child(2) { height: 45%; background: var(--green); }
+      .ruler span:nth-child(3) { height: 65%; background: var(--gold); }
+      .ruler span:nth-child(4) { height: 82%; background: var(--red); }
+      .ruler span:nth-child(5) { height: 100%; }
+
+      .finish {
+        min-height: 620px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        background: #17202a;
+      }
+
+      .finish h2 {
+        max-width: 760px;
+        font-size: clamp(40px, 7vw, 72px);
+      }
+
+      .finish p {
+        max-width: 650px;
+        color: #c9d4df;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .finish-line {
+        width: 140px;
+        height: 5px;
+        margin-top: 28px;
+        background: var(--green);
+      }
+
+      footer {
+        padding: 24px 20px;
+        color: var(--muted);
+        background: #ffffff;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      @media (max-width: 760px) {
+        .test-bar {
+          align-items: flex-start;
+          padding: 10px 14px;
+        }
+
+        .safe-label {
+          max-width: 120px;
+          text-align: right;
+        }
+
+        h1 {
+          font-size: clamp(36px, 11vw, 48px);
+        }
+
+        .intro,
+        .test-section,
+        .finish {
+          min-height: 560px;
+        }
+
+        .check-grid,
+        .metric-grid,
+        .swatches,
+        .alignment-test {
+          grid-template-columns: 1fr;
+        }
+
+        .swatch {
+          min-height: 110px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .safe-label {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-bar">
+      <div class="test-brand"><span class="test-mark">G</span> GoFullScreen Capture Test</div>
+      <div class="safe-label">Safe public test page</div>
+    </div>
+
+    <main>
+      <section class="intro">
+        <div class="section-inner">
+          <p class="eyebrow">FULL-PAGE CAPTURE CHECK</p>
+          <h1>A page built to test the complete screenshot journey.</h1>
+          <p class="intro-copy">
+            This page contains no personal data, accounts, analytics, or tracking. It is intentionally long and visually varied so you can verify scrolling, stitching, color, text, tables, and sticky-header handling.
+          </p>
+          <div class="capture-instruction"><span>1</span> Click the GoFullScreen icon to begin</div>
+        </div>
+      </section>
+
+      <section class="test-section">
+        <div class="section-inner">
+          <p class="section-number">SECTION 01</p>
+          <h2>Watch the page move from top to bottom.</h2>
+          <p class="section-copy">During capture, GoFullScreen should show progress, scroll through every section, and return you to your original position when it finishes.</p>
+          <div class="check-grid">
+            <article class="check-item"><strong>Progress</strong><p>The capture indicator should appear immediately and update as sections are recorded.</p></article>
+            <article class="check-item"><strong>Scrolling</strong><p>The page should move smoothly while each viewport is prepared for capture.</p></article>
+            <article class="check-item"><strong>Stitching</strong><p>The final image should connect every section without visible gaps or repeated headers.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="test-section">
+        <div class="section-inner">
+          <p class="section-number">SECTION 02</p>
+          <h2>Confirm color fidelity across distinct tones.</h2>
+          <p class="section-copy">Each color block should remain solid and meet the next block at a clean vertical edge in the completed screenshot.</p>
+          <div class="swatches" aria-label="Color fidelity samples">
+            <div class="swatch blue">Blue #2563EB</div>
+            <div class="swatch green">Green #16845B</div>
+            <div class="swatch red">Red #D14343</div>
+            <div class="swatch gold">Gold #B7791F</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="test-section">
+        <div class="section-inner">
+          <p class="section-number">SECTION 03</p>
+          <h2>Inspect structured rows and fine borders.</h2>
+          <p class="section-copy">This table makes duplicated rows, missing lines, and alignment shifts easy to spot after stitching.</p>
+          <table class="sample-table">
+            <thead><tr><th>Capture check</th><th>Expected result</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Sticky test bar</td><td>Appears once at the top</td><td><span class="status">Ready</span></td></tr>
+              <tr><td>Horizontal borders</td><td>Continuous and one pixel wide</td><td><span class="status">Ready</span></td></tr>
+              <tr><td>Text alignment</td><td>Consistent across every row</td><td><span class="status">Ready</span></td></tr>
+              <tr><td>Final row</td><td>Visible without clipping</td><td><span class="status">Ready</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="test-section">
+        <div class="section-inner">
+          <p class="section-number">SECTION 04</p>
+          <h2>Compare typography and vertical alignment.</h2>
+          <p class="section-copy">Large serif text, smaller body copy, and measured columns help reveal scaling or device-pixel-ratio issues.</p>
+          <div class="alignment-test">
+            <div class="type-sample">
+              <p class="large">Sharp at every scale.</p>
+              <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789 &amp; punctuation: ( ) [ ] / + =</p>
+            </div>
+            <div class="ruler" aria-label="Five vertical alignment bars"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="finish">
+        <div class="section-inner">
+          <p class="section-number">END OF TEST PAGE</p>
+          <h2>If you can read this, the full height was captured.</h2>
+          <p>Open the completed image and confirm that this final section appears once, the sticky test bar appears only at the top, and no section is duplicated or missing.</p>
+          <div class="finish-line"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>GoFullScreen public capture test page. No tracking and no personal data.</footer>
+  </body>
+</html>

@@ -125,9 +125,10 @@ Policy and Limited Use requirements:
 
 ## External navigation
 
-The only external navigation initiated by the extension is an optional rating
-link that the user must click. It opens the GoFullScreen listing in the Chrome
-Web Store and does not attach screenshot or webpage data.
+External links open only after the user clicks them. They can open the
+GoFullScreen rating page in the Chrome Web Store or GoFullScreen's support and
+capture-test pages. These links do not attach screenshot, webpage, URL, or
+settings data.
 
 ## Changes to this policy
 

@@ -17,6 +17,12 @@ Found a bug or have a question?
 
 Read the [GoFullScreen Privacy Policy](privacy.html).
 
+## Capture Test Page
+
+Try GoFullScreen on the public [capture test page](capture-test.html). It is
+written in English, contains no personal data, and is intentionally long enough
+to demonstrate a complete full-page capture.
+
 ## Install
 
 Install GoFullScreen from the
