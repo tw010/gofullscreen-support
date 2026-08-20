@@ -1,4 +1,4 @@
-# GoFullScreen
+# GoFullScreenshot
 
 One-click full-page screenshot capture for Google Chrome. Automatically
 scrolls, captures, and stitches the entire page locally in your browser,
@@ -20,15 +20,15 @@ This is expected browser behavior and does not need a support request.
 
 ## Privacy Policy
 
-Read the [GoFullScreen Privacy Policy](privacy.html).
+Read the [GoFullScreenshot Privacy Policy](privacy.html).
 
 ## Capture Test Page
 
-Try GoFullScreen on the public [capture test page](capture-test.html). It is
+Try GoFullScreenshot on the public [capture test page](capture-test.html). It is
 written in English, contains no personal data, and is intentionally long enough
 to demonstrate a complete full-page capture.
 
 ## Install
 
-Install GoFullScreen from the
+Install GoFullScreenshot from the
 [Chrome Web Store](https://chromewebstore.google.com/detail/oakpajnbganffddahfgdpmkhimeeoapp).

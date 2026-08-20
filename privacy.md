@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Privacy Policy - GoFullScreen
+title: Privacy Policy - GoFullScreenshot
 ---
 
-# Privacy Policy: GoFullScreen
+# Privacy Policy: GoFullScreenshot
 
-_Last updated: 2026-08-19_
+_Last updated: 2026-08-20_
 
-GoFullScreen is a Google Chrome extension that captures a complete,
+GoFullScreenshot is a Google Chrome extension that captures a complete,
 full-page screenshot of the webpage you are currently viewing, with a single
 click. This policy explains what data the extension processes, where it is
 processed, and why.
@@ -22,9 +22,9 @@ processed, and why.
   webpage content, browsing history, or URLs.
 - There are no accounts, analytics, advertisements, tracking, or data sales.
 
-## Data GoFullScreen processes
+## Data GoFullScreenshot processes
 
-When you click the GoFullScreen toolbar button, the extension:
+When you click the GoFullScreenshot toolbar button, the extension:
 
 1. Reads the layout and visible pixels of the active tab only.
 2. Temporarily scrolls that tab to capture each section of the page.
@@ -46,18 +46,18 @@ transmitted or stored after capture.
 The captured pixels can contain any information visibly shown on the page the
 user chooses to capture. Depending on the page, this may include website
 content, personal communications, form content, names, account information,
-or other sensitive information. GoFullScreen does not separately extract,
+or other sensitive information. GoFullScreenshot does not separately extract,
 classify, or inspect that information. It handles it only as part of the
 user-requested screenshot.
 
-GoFullScreen stores preferences with `chrome.storage.local`, including capture
+GoFullScreenshot stores preferences with `chrome.storage.local`, including capture
 mode, capture feedback, scroll animation, image format and quality, filename
 prefix, download behavior, image-part settings, clipboard resizing, and local
 counters used to limit the frequency of the optional rating prompt. These
 settings stay on the device and are never transmitted.
 
 Recent capture history is disabled by default. When the user explicitly
-enables it, GoFullScreen stores up to five completed screenshots in local
+enables it, GoFullScreenshot stores up to five completed screenshots in local
 IndexedDB, subject to an additional total limit of approximately 250 MB. The
 oldest records are deleted automatically when either limit would be exceeded.
 History records contain the image Blob, local creation time, pixel dimensions,
@@ -77,9 +77,9 @@ Under the Chrome Web Store User Data Policy, website content and screen
 captures can be considered user data even when processed only locally. This
 policy applies to that local processing even though nothing is transmitted.
 
-## What GoFullScreen does not do
+## What GoFullScreenshot does not do
 
-GoFullScreen does not:
+GoFullScreenshot does not:
 
 - Upload screenshots, webpage content, HTML, settings, or URLs.
 - Store screenshots outside the user's device.
@@ -117,16 +117,16 @@ only so the viewer can display it, and older records are removed. With history
 enabled, at most five recent captures and approximately 250 MB are retained
 locally, with oldest-first automatic deletion. Preferences and local counters
 remain in `chrome.storage.local` until the user resets them, clears the
-extension data, or uninstalls GoFullScreen. Saved captures can be cleared
-inside GoFullScreen at any time. Nothing is retained by the developer because
+extension data, or uninstalls GoFullScreenshot. Saved captures can be cleared
+inside GoFullScreenshot at any time. Nothing is retained by the developer because
 the developer never receives it.
 
 ## Permissions
 
-GoFullScreen requests the minimum permissions required for its features:
+GoFullScreenshot requests the minimum permissions required for its features:
 
 - **`activeTab`**: temporarily grants access to the tab on which the user
-  invokes GoFullScreen. It does not provide standing access to browsing.
+  invokes GoFullScreenshot. It does not provide standing access to browsing.
 - **`scripting`**: runs the scrolling and measurement logic on that same tab
   after the user starts a capture.
 - **`storage`**: stores extension settings locally on the device.
@@ -134,12 +134,12 @@ GoFullScreen requests the minimum permissions required for its features:
   to save each screenshot" so Chrome can display its native Save As dialog.
   The permission is removed again when that setting is disabled.
 
-GoFullScreen does not request host permissions, `<all_urls>`, browsing history,
+GoFullScreenshot does not request host permissions, `<all_urls>`, browsing history,
 cookies, or access to clipboard contents.
 
 ## Limited Use disclosure
 
-GoFullScreen's use of information follows the Chrome Web Store User Data
+GoFullScreenshot's use of information follows the Chrome Web Store User Data
 Policy and Limited Use requirements:
 
 - Captured pixels are used only to provide the disclosed screenshot feature.
@@ -151,17 +151,17 @@ Policy and Limited Use requirements:
 ## External navigation
 
 External links open only after the user clicks them. They can open the
-GoFullScreen rating page in the Chrome Web Store or GoFullScreen's support and
+GoFullScreenshot rating page in the Chrome Web Store or GoFullScreenshot's support and
 capture-test pages. These links do not attach screenshot, webpage, URL, or
 settings data.
 
 ## Changes to this policy
 
-If GoFullScreen changes how it handles data, this policy, the Chrome Web Store
+If GoFullScreenshot changes how it handles data, this policy, the Chrome Web Store
 listing, and any required in-product disclosures will be updated before the
 change takes effect.
 
 ## Contact and support
 
 For privacy questions, bug reports, or support, open a request in the
-[GoFullScreen support repository](https://github.com/tw010/gofullscreen-support/issues/new).
+[GoFullScreenshot support repository](https://github.com/tw010/gofullscreen-support/issues/new).
